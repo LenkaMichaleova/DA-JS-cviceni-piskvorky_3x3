@@ -1,0 +1,68 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	max-width: 62rem;
+	margin-inline: auto;
+	font-family: sans-serif;
+	padding-inline: 1rem;
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	gap: 1.5rem;
+}
+
+h1 {
+	grid-column: 1 / -1;
+	margin-bottom: 0;
+}
+
+.herni-pole {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	aspect-ratio: 1 / 1;
+}
+
+.herni-pole,
+.policko {
+	border: 1px solid;
+}
+
+.policko {
+	position: relative;
+}
+
+.kolecko::before {
+	content: '';
+	position: absolute;
+	inset: 20%;
+	border: 4px solid;
+	border-radius: 50%;
+}
+
+.krizek::before,
+.krizek::after {
+	content: '';
+	position: absolute;
+	inset: calc(50% - 2px) 20% auto;
+	height: 4px;
+	background-color: currentColor;
+	transform: rotate(45deg);
+}
+
+.krizek::after {
+	transform: rotate(-45deg);
+}
+
+.vysledek:empty::before {
+	color: #ff0000;
+	content: 'Výsledek je zatím neznámý.';
+}
